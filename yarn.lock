@@ -3152,6 +3152,13 @@ ag-grid-enterprise@^29.2.0:
   resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-29.2.0.tgz#32130d8e96dcceaa69ebc4e92774f2ff722cb927"
   integrity sha512-LYwX6Z8O2FBzN2c0N+h9mMX5hQQMpBzZ+ztmTiboxIVE6DB1MrpfVy0A8YfR31JtzLaj/lRjCqsx6BcnbvkSmA==
 
+ag-grid-react@^29.2.0:
+  version "29.2.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-29.2.0.tgz#512f41e98cfd7ec291832aae8601f76b52c366c8"
+  integrity sha512-FZEWhbe51KNkvu+MohGXxXixIJdakJrs5XDdJ/h1jqmCX9WZzHNT2OvoYHIXB7gcKKj5pf47YJB8eaEqsRlpbg==
+  dependencies:
+    prop-types "^15.8.1"
+
 agent-base@5:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-5.1.1.tgz#e8fb3f242959db44d63be665db7a8e739537a32c"
