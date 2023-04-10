@@ -1,13 +1,32 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+---
+
+# 導入フロー
+
+Next
+- npx create-next-app app-name --use-yarn
+    - option: TypeScript EsLint 
+
+Storybook    
+
+- npx sb@next init
+    - option: eslint-plugin-storybook
+
+pacakges    
+
+- yarn add @mui/material @emotion/react @emotion/styled @emotion/server ag-grid-community ag-grid-enterprise chart.js
+
+
+---
+
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
 yarn dev
+yarn storybook
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
