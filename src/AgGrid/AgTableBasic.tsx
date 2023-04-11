@@ -1,69 +1,79 @@
-import React, { useState, useRef, useEffect, useMemo, useCallback} from 'react';
-import { render } from 'react-dom';
-import { AgGridReact } from 'ag-grid-react'; // the AG Grid React Component
-
-import 'ag-grid-community/styles/ag-grid.css'; // Core grid CSS, always needed
-import 'ag-grid-community/styles/ag-theme-alpine.css'; // Optional theme CSS
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
+import { AgGridReact } from "ag-grid-react";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
+import { Button, Typography } from "@mui/material";
 
 const AgTableBasic = () => {
+  // GridのAPIにアクセスするためのRef
+  const gridRef = useRef<AgGridReact>(null);
 
- const gridRef = useRef(); // Optional - for accessing Grid's API
- const [rowData, setRowData] = useState(); // Set rowData to Array of Objects, one Object per Row
+  // 表示するテーブルの行データ
+  const [rowData, setRowData] = useState<any[]>([]);
 
- // Each Column Definition results in one Column.
- const [columnDefs, setColumnDefs] = useState([
-   {field: 'make', filter: true},
-   {field: 'model', filter: true},
-   {field: 'price'}
- ]);
+  // 各カラムの定義
+  const [columnDefs, setColumnDefs] = useState([
+    { field: "make", filter: true }, // メーカー
+    { field: "model", filter: true }, // 車種
+    { field: "price" }, // 価格
+  ]);
 
- // DefaultColDef sets props common to all Columns
- const defaultColDef = useMemo( ()=> ({
-     sortable: true
-   }));
+  // カラムの共通のプロパティを設定するオブジェクト
+  const defaultColDef = useMemo(
+    () => ({
+      sortable: true,
+    }),
+    []
+  );
 
- // Example of consuming Grid Event
- const cellClickedListener = useCallback( event => {
-   console.log('cellClicked', event);
- }, []);
+  // セルクリック時の処理
+  const handleCellClicked = useCallback((event: any) => {
+    console.log("cellClicked", event);
+  }, []);
 
- // Example load data from server
- useEffect(() => {
-   fetch('https://www.ag-grid.com/example-assets/row-data.json')
-   .then(result => result.json())
-   .then(rowData => setRowData(rowData))
- }, []);
+  // データの読み込み処理
+  useEffect(() => {
+    fetch("https://www.ag-grid.com/example-assets/row-data.json")
+      .then((result) => result.json())
+      .then((rowData) => setRowData(rowData));
+  }, []);
 
- // Example using Grid's API
- const buttonListener = useCallback( e => {
-   gridRef.current.api.deselectAll();
- }, []);
+  // Clear Selectの処理
+  const handleButtonClicked = useCallback(() => {
+    gridRef.current?.api.deselectAll();
+  }, []);
 
- return (
-   <div>
+  return (
+    <div>
+      <main className="main">
+        <Typography variant="h2" color="initial">
+          Basic Table
+        </Typography>
 
-     {/* Example using Grid's API */}
-     <button onClick={buttonListener}>Push Me</button>
-
-     {/* On div wrapping Grid a) specify theme CSS Class Class and b) sets Grid size */}
-     <div className="ag-theme-alpine" style={{width: 500, height: 500}}>
-
-       <AgGridReact
-           ref={gridRef} // Ref for accessing Grid's API
-
-           rowData={rowData} // Row Data for Rows
-
-           columnDefs={columnDefs} // Column Defs for Columns
-           defaultColDef={defaultColDef} // Default Column Properties
-
-           animateRows={true} // Optional - set to 'true' to have rows animate when sorted
-           rowSelection='multiple' // Options - allows click selection of rows
-
-           onCellClicked={cellClickedListener} // Optional - registering for Grid Event
-           />
-     </div>
-   </div>
- );
+        <div className="ag-theme-alpine" style={{ width: 500, height: 500 }}>
+          <AgGridReact
+            ref={gridRef}
+            rowData={rowData}
+            columnDefs={columnDefs}
+            defaultColDef={defaultColDef}
+            animateRows={true}
+            rowSelection="multiple"
+            onCellClicked={handleCellClicked}
+          />
+        </div>
+        <Button variant="outlined" sx={{ mt: 1 }} onClick={handleButtonClicked}>
+          Clear Select
+        </Button>
+        {/* <button onClick={handleButtonClicked}>Clear Select</button> */}
+      </main>
+    </div>
+  );
 };
 
 export default AgTableBasic;
