@@ -28,13 +28,14 @@ const AgTableBasic = () => {
   const defaultColDef = useMemo(
     () => ({
       sortable: true,
+      filter: true,
     }),
     []
   );
 
   // セルクリック時の処理
-  const handleCellClicked = useCallback((event: any) => {
-    console.log("cellClicked", event);
+  const handleCellClicked = useCallback((e: any) => {
+    console.log("cellClicked", e);
   }, []);
 
   // データの読み込み処理
@@ -45,7 +46,7 @@ const AgTableBasic = () => {
   }, []);
 
   // Clear Selectの処理
-  const handleButtonClicked = useCallback(() => {
+  const handleButtonClicked = useCallback((_e: any) => {
     gridRef.current?.api.deselectAll();
   }, []);
 
@@ -70,7 +71,6 @@ const AgTableBasic = () => {
         <Button variant="outlined" sx={{ mt: 1 }} onClick={handleButtonClicked}>
           Clear Select
         </Button>
-        {/* <button onClick={handleButtonClicked}>Clear Select</button> */}
       </main>
     </div>
   );
