@@ -1,6 +1,12 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import AgGridTable from '../src/AgGrid/AgTableBasic'
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+// import { Divider } from "@mui/material";
+
+// AgGrid
+import AgCheckBox from "../src/components/AgGrid/AgCheckBox";
+// import AgGridTable from "../src/components/AgGrid/AgTableBasic";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-alpine.css";
 
 export default function Home() {
   return (
@@ -13,9 +19,11 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <div className={styles.description}>
-          <AgGridTable/>
+          <AgCheckBox />
+          {/* <Divider />
+          <AgGridTable /> */}
         </div>
       </main>
     </>
-  )
+  );
 }
