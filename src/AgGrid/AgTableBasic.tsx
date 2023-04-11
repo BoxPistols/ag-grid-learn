@@ -34,7 +34,7 @@ const AgTableBasic = () => {
   );
 
   // セルクリック時の処理
-  const handleCellClicked = useCallback((e:  ) => {
+  const handleCellClicked = useCallback((e: any) => {
     console.log("cellClicked", e);
   }, []);
 
@@ -71,7 +71,6 @@ const AgTableBasic = () => {
         <Button variant="outlined" sx={{ mt: 1 }} onClick={handleButtonClicked}>
           Clear Select
         </Button>
-        {/* <button onClick={handleButtonClicked}>Clear Select</button> */}
       </main>
     </div>
   );
