@@ -5,6 +5,8 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    // Material-UI の ThemeProvider を使うために addon を追加
+    "@mui/storybook-addon-theme-selector",
   ],
   framework: {
     name: "@storybook/nextjs",
