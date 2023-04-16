@@ -3,6 +3,7 @@ import { AgGridReact } from "ag-grid-react";
 
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
+import { Button, Container } from "@mui/material";
 
 const AgTableBasic = () => {
   const [rowData, setRowData] = useState();
@@ -36,8 +37,7 @@ const AgTableBasic = () => {
   }, []);
 
   return (
-    <div>
-      <button onClick={buttonListener}>Push Me</button>
+    <Container sx={{ mt: 4 }}>
       <div className="ag-theme-alpine" style={{ width: 500, height: 500 }}>
         <AgGridReact
           ref={gridRef}
@@ -49,7 +49,10 @@ const AgTableBasic = () => {
           onCellClicked={cellClickedListener}
         />
       </div>
-    </div>
+      <Button variant="outlined" onClick={buttonListener} sx={{ mt: 1 }}>
+        Push Me
+      </Button>
+    </Container>
   );
 };
 

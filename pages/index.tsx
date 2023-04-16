@@ -1,7 +1,9 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import AgGridTable from "../src/AgGrid/AgTableBasic";
-import MuiDocs from "../src/docs/mui";
+import MuiDocs from "../src/docs/docs-mui";
+import Typography from "@mui/material/Typography";
+import { Container } from "@mui/material";
 
 export default function Home() {
   return (
@@ -12,13 +14,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <main className={styles.main}> */}
-      {/* <div className={styles.description}> */}
-      <div>
+
+      <Container sx={{ mt: 2, p: 4 }}>
+        <Typography variant="h2" color="initial">
+          AgGrid Basic Table
+        </Typography>
+
         <AgGridTable />
         <MuiDocs />
-      </div>
-      {/* </main> */}
+      </Container>
     </>
   );
 }
